@@ -1,0 +1,10 @@
+@import '../../../../styles/variables.scss';
+
+.tag {
+    width: auto;
+    font-size: 16px;
+    padding: 2px 10px;
+    border: 1px solid $primary-color;
+    background-color: $white;
+    border-radius: 10px;
+}
