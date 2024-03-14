@@ -5,6 +5,7 @@ import Layout from "../../components/Layout"
 import ApiClient from "../../api/ApiClient"
 import List from '../../components/ui/atoms/List'
 import MovieCard from "../../components/Movie/MovieCard"
+import Swiper from "../../components/Swiper/Swiper"
 
 const Home = () => {
     const [popularMovies, setPopularMovies] = useState([])
@@ -16,6 +17,10 @@ const Home = () => {
 
     return <Layout>
         <h2>Les films du moment</h2>
+        <Swiper
+            collection={popularMovies}
+            renderItem={movie => <MovieCard movie={movie} />}
+        />
         <List
             collection={popularMovies}
             renderItem={movie => <MovieCard movie={movie} />}

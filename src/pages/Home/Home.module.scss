@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .movieList {
     gap: 2%;
 
@@ -9,6 +11,7 @@
 @media (max-width: 1024px) {
     .movieList {
         gap: 3%;
+
         li {
             width: 22%;
         }
@@ -26,6 +29,7 @@
 @media (max-width: 480px) {
     .movieList {
         gap: 5%;
+
         li {
             width: 40%;
         }

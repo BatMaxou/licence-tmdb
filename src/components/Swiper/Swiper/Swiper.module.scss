@@ -1,0 +1,84 @@
+@import '../../../styles/variables.scss';
+
+.swiper {
+    position: relative;
+    width: 100%;
+    padding: 20px 60px;
+
+    > div {
+        align-items: center;
+
+        .slide {
+            margin-inline: 1%;
+            width: 18%;
+            z-index: 1;
+        }
+    }
+
+    .swiperNext,
+    .swiperPrev {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2;
+        transition: background-color .2s linear;
+
+        img {
+            width: 40px;
+        }
+
+        &:hover {
+            background-color: $shadow;
+        }
+    }
+
+    .swiperNext {
+        right: 0;
+    }
+
+    .swiperPrev {
+        left: 0
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .swiper > div {
+        .slide {
+            margin-inline: 1.5%;
+            width: 22%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .swiper > div {
+        .slide {
+            width: 30%;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .swiper > div {
+        .slide {
+            margin-inline: 2.5%;
+            width: 40%;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper > div {
+        .slide {
+            margin-inline: 5%;
+            width: 90%;
+        }
+    }
+}
