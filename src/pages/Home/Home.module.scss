@@ -1,6 +1,17 @@
 @import '../../styles/variables.scss';
 
+.subtitle {
+    margin-bottom: 30px;
+}
+
+.search {
+    width: 70%;
+    height: 50px;
+    border-radius: 10px;
+}
+
 .movieList {
+    padding: 30px 60px;
     gap: 2%;
 
     li {

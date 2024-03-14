@@ -1,20 +1,14 @@
 import styles from './Input.module.scss'
+import cn from '../../../../utils/classnames'
 
-const Input = ({id, type = 'text', name, placeholder, setAnswer}) => {
-    return <div className={styles.line}>
-        <input
-            className={styles.input}
-            placeholder={placeholder}
-            name={name}
-            type={type}
-        />
-        <input
-            type={'radio'}
-            name={'answer'}
-            className={styles.radio}
-            onChange={(e) => setAnswer(e.target.checked ? id : null)}
-        />
-    </div>
+const Input = ({type = 'text', name, placeholder, onChange, className}) => {
+    return <input
+        className={cn(styles.input, className)}
+        placeholder={placeholder}
+        name={name}
+        type={type}
+        onChange={onChange}
+    />
 }
 
 export default Input;

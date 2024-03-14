@@ -1,23 +1,10 @@
 @import '../../../../styles/variables.scss';
 
-.line {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.input {
+    padding: 10px;
 
-    .input {
-        width: 100%;
-        padding: 10px;
-
-        &:focus {
-            border: $primary-color solid 2px;
-            outline: none;
-        }
-    }
-
-    .radio {
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
+    &:focus {
+        border: $primary-color solid 2px;
+        outline: none;
     }
 }

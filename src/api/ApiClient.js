@@ -7,6 +7,7 @@ class ApiClient {
     async get(url) {
         return fetch(`${this.baseUrl}${url}`, {
             headers: {
+                accept: 'application/json',
                 authorization: `Bearer ${this.apiKey}`
             },
         })
