@@ -13,3 +13,5 @@ npm install
 ```bash
 npm run start
 ```
+
+// pour les commentaires Dexie.Js
