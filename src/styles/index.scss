@@ -7,10 +7,15 @@
 }
 
 body {
+    font-family: sans-serif;
     font-size: $font-size-text;
     accent-color: $primary-color;
     background-color: $black;
     color: $white;
+
+    h1, h2, h3 {
+        text-align: center;
+    }
 
     h1 {
         font-size: $font-size-main-title;

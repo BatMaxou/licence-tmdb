@@ -1,0 +1,12 @@
+body {
+    .searchTag {
+        background-color: transparent;
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+            background-color: var(--color);
+        }
+    }
+
+}

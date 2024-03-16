@@ -1,0 +1,71 @@
+.searchMovie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .searchInput {
+        width: 70%;
+        margin: 0 auto;
+        max-width: 1000px;
+        height: 50px;
+        border-radius: 10px;
+    }
+
+    .genreList {
+        width: 90%;
+        max-width: 1500px;
+
+        > * {
+            width: auto;
+        }
+    }
+
+    .movieList {
+        padding: 30px 60px;
+        gap: 20px 2%;
+
+        > * {
+            width: 18%;
+        }
+    }
+
+    @media (max-width: 1500px) {
+        .movieList {
+            gap: 20px 3%;
+
+            > * {
+                width: 22%;
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .movieList {
+            > * {
+                width: 30%;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .movieList {
+            gap: 20px 10%;
+
+            > * {
+                width: 40%;
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .searchInput {
+            width: 90%;
+        }
+
+        .movieList {
+            > * {
+                width: 90%;
+            }
+        }
+    }
+}
