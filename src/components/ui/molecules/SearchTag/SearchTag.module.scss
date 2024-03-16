@@ -1,11 +1,15 @@
+@import '../../../../styles/variables.scss';
+
 body {
     .searchTag {
         background-color: transparent;
+        color: $white;
         cursor: pointer;
 
         &.active,
         &:hover {
-            background-color: var(--color);
+            color: var(--color);
+            background-color: var(--background-color);
         }
     }
 

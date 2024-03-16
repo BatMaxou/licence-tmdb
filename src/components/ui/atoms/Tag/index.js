@@ -1,12 +1,14 @@
 import styles from './Tag.module.scss'
 import cn from '../../../../utils/classnames'
 import {useEffect, useRef} from 'react'
+import blackOrWhite from '../../../../utils/blackOrWhite'
 
 const Tag = ({label, color, onClick, className}) => {
     const tag = useRef()
 
     useEffect(() => {
-        tag?.current?.style.setProperty('--color', color ?? '#fff')
+        tag?.current?.style.setProperty('--background-color', color ?? '#fff')
+        tag?.current?.style.setProperty('--color', blackOrWhite(color) === 'B' ? '#333' : '#fff')
     }, [tag, color])
 
     return <div
