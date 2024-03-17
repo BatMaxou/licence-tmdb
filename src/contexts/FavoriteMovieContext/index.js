@@ -1,4 +1,4 @@
-import {createContext, useCallback, useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 
 import ApiClient from "../../api/ApiClient";
 

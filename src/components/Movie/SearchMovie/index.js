@@ -9,6 +9,7 @@ import SearchTag from '../../ui/molecules/SearchTag'
 import MovieCard from '../MovieCard'
 import styles from './SearchMovie.module.scss'
 import ApiClient from '../../../api/ApiClient'
+import PaginatedList from '../../ui/molecules/PaginatedList'
 
 const SearchMovie = () => {
     const [loader, setLoader] = useState(false)
@@ -16,6 +17,8 @@ const SearchMovie = () => {
     const [genresSearched, setGenresSearched] = useState({})
     const [searchedMovies, setSearchedMovies] = useState(null)
     const [searchedInput, setSearchedInput] = useState('')
+    const [page, setPage] = useState(1)
+    const [maxPage, setMaxPage] = useState(1)
     const [whatChanged, setWhatChanged] = useState('')
     const debouncedSearchInput = useDebounce(searchedInput, 500)
 
@@ -37,9 +40,10 @@ const SearchMovie = () => {
             }
 
             setLoader(true)
-            ApiClient.get(`/search/movie?query=${debouncedSearchInput}&include_adult=true&language=fr_FR&page=1`)
+            ApiClient.get(`/search/movie?query=${debouncedSearchInput}&include_adult=true&language=fr_FR&page=${page}`)
                 .then(data => {
                     setSearchedMovies(data.results)
+                    setMaxPage(data.total_pages)
                     setLoader(false)
                 })
 
@@ -57,15 +61,16 @@ const SearchMovie = () => {
                 .join(',')
 
             setLoader(true)
-            ApiClient.get(`/discover/movie?include_adult=true&include_video=false&language=fr_FR&page=1&sort_by=popularity.desc&with_genres=${genreQuery}`)
+            ApiClient.get(`/discover/movie?include_adult=true&include_video=false&language=fr_FR&page=${page}&sort_by=popularity.desc&with_genres=${genreQuery}`)
                 .then(data => {
                     setSearchedMovies(data.results)
+                    setMaxPage(data.total_pages)
                     setLoader(false)
                 })
 
             return
         }
-    }, [whatChanged, debouncedSearchInput, genresSearched])
+    }, [whatChanged, debouncedSearchInput, genresSearched, page])
 
     return <div className={styles.searchMovie}>
         <h2 className={styles.subtitle}>Que voulez-vous regarder ?</h2>
@@ -75,6 +80,7 @@ const SearchMovie = () => {
             value={searchedInput}
             onChange={event => {
                 setSearchedInput(event.target.value)
+                setPage(1)
                 setWhatChanged('input')
             }}
             className={styles.searchInput}
@@ -90,6 +96,7 @@ const SearchMovie = () => {
                         ...(genres ?? {}),
                         [genre.id]: true
                     }))
+                    setPage(1)
                     setWhatChanged('genres')
                 }}
                 onRemove={() => {
@@ -97,15 +104,20 @@ const SearchMovie = () => {
                         ...(genres ?? {}),
                         [genre.id]: false
                     }))
+                    setPage(1)
                     setWhatChanged('genres')
                 }}
             />}
             className={styles.genreList}
         />}
         {loader && <Loader />}
-        {searchedMovies && <List
+        {searchedMovies && <PaginatedList
             collection={searchedMovies}
             renderItem={movie => <MovieCard movie={movie} />}
+            current={page}
+            onNext={() => setPage(page + 1)}
+            onPrevious={() => setPage(page - 1)}
+            maxPage={maxPage}
             className={styles.movieList}
         />}
     </div>
