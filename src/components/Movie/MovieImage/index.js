@@ -3,7 +3,7 @@ import cn from '../../../utils/classnames'
 
 const MovieImage = ({movieTitle, posterPath, className}) => {
     return <img
-        src={`${process.env.REACT_APP_API_IMAGE_BASE_URL}${posterPath}`}
+        src={posterPath ? `${process.env.REACT_APP_API_IMAGE_BASE_URL}${posterPath}` : '/images/filmio.png'}
         alt={`Affiche de ${movieTitle}`}
         className={cn(styles.image, className)}
     />
