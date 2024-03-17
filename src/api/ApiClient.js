@@ -12,7 +12,19 @@ class ApiClient {
             },
         })
             .then(response => response.json())
-            .then(data => data)
+    }
+
+    async post(url, body) {
+        return fetch(`${this.baseUrl}${url}`, {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json',
+                authorization: `Bearer ${this.apiKey}`
+            },
+            body: JSON.stringify(body)
+        })
+            .then(response => response.json())
     }
 }
 

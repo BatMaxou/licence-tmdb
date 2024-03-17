@@ -6,6 +6,7 @@ import {useEffect, useState} from 'react'
 import apiClient from '../../../api/ApiClient'
 import Tag from '../../ui/atoms/Tag'
 import getGenreColor from '../../../utils/genreColors'
+import MovieFavorite from '../MovieFavorite'
 
 const MovieCard = ({movie}) => {
     const [genres, setGenres] = useState([])
@@ -19,6 +20,7 @@ const MovieCard = ({movie}) => {
     }, [movie])
 
     return <Card className={styles.card}>
+        <MovieFavorite movie={movie} className={styles.favourite} />
         <MovieImage movieTitle={movie.title} posterPath={movie.poster_path} />
         <div className={styles.details}>
             <h3>{movie.title}</h3>
