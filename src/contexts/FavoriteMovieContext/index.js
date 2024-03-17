@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useCallback, useEffect, useState} from "react";
 
 import ApiClient from "../../api/ApiClient";
 
@@ -28,6 +28,12 @@ export const FavoriteMovieContextProvider = ({children}) => {
 
     const removeFavoriteMovie = (movie) => {
         setFavoriteMovies(favoriteMovies.filter(favoriteMovie => favoriteMovie.id !== movie.id));
+
+        ApiClient.post(`/account/${process.env.REACT_APP_TMDB_ACCOUNT_ID}/favorite`, {
+            media_type: 'movie',
+            media_id: movie.id,
+            favorite: false,
+        })
     }
 
     return (
