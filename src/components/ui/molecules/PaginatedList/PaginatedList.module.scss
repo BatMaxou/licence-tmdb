@@ -1,6 +1,10 @@
 @import '../../../../styles/variables.scss';
 
 .paginatedList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
     .navBlock {
         display: flex;
         justify-content: center;
@@ -35,8 +39,10 @@
         }
 
         &.topNavBlock {
-            padding-inline: 60px;
+            display: flex;
             justify-content: flex-end;
+            align-items: center;
+            padding-inline: $padding-inline;
         }
     }
 }

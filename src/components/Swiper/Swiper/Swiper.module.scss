@@ -3,7 +3,7 @@
 .swiper {
     position: relative;
     width: 100%;
-    padding-inline: 60px;
+    padding-inline: $padding-inline;
 
     > div {
         align-items: center;
