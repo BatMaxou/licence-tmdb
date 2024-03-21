@@ -1,0 +1,62 @@
+@import "../../../styles/variables.scss";
+
+.movieHeader {
+    width: 100%;
+    position: relative;
+    height: 40dvh;
+    overflow: hidden;
+
+    .background {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        transform: translateY(-20%);
+    }
+
+    .mainInfos {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+
+        .poster {
+            height: 30dvh;
+            box-shadow: $shadow 0 0 25px;
+        }
+
+        .title {
+            width: 50%;
+            text-shadow: $black 0 0 25px;
+        }
+    }
+
+    .favorite {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 60px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 756px) {
+        .background {
+            top: 0;
+            height: 100%;
+            max-width: none;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .mainInfos {
+            .poster {
+                display: none;
+            }
+
+            .title {
+                width: 90%;
+            }
+        }
+    }
+}
