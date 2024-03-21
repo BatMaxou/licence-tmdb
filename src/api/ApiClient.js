@@ -26,6 +26,17 @@ class ApiClient {
         })
             .then(response => response.json())
     }
+
+    async delete(url) {
+        return fetch(`${this.baseUrl}${url}`, {
+            method: 'DELETE',
+            headers: {
+                accept: 'application/json',
+                authorization: `Bearer ${this.apiKey}`
+            },
+        })
+            .then(response => response.json())
+    }
 }
 
 const apiClient = new ApiClient()

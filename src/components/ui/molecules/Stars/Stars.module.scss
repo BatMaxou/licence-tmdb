@@ -1,0 +1,23 @@
+.stars {
+    position: relative;
+    width: 220px;
+    height: 44px;
+
+    .filledStars {
+        display: flex;
+        flex-wrap: nowrap;
+        position: absolute;
+        inset: 0;
+        width: var(--width);
+        overflow: hidden;
+    }
+
+    img {
+        max-width: none;
+        width: 44px;
+
+        &.clickable {
+            cursor: pointer;
+        }
+    }
+}
