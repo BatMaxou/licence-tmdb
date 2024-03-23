@@ -1,0 +1,61 @@
+@import '../../styles/variables.scss';
+
+.layout {
+    gap: 30px;
+    justify-content: center;
+
+    .movieList {
+        > ul {
+            padding-inline: $padding-inline;
+            gap: 20px 2%;
+
+            > * {
+                width: 18%;
+            }
+        }
+    }
+
+    @media (max-width: 1500px) {
+        .movieList {
+            > ul {
+                gap: 20px 3%;
+
+                > * {
+                    width: 22%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .movieList {
+            > ul {
+                > * {
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .movieList {
+            > ul {
+                gap: 20px 10%;
+
+                > * {
+                    width: 40%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .movieList {
+            > ul {
+                > * {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
