@@ -30,11 +30,11 @@ const MovieRate = ({movie}) => {
             percentage={rate * 10}
             onClick={index => handleRate((index + 1) * 2)}
         />
-        <Button
+        {rate > 0 && <Button
             label="Retirer ma note"
             onClick={handleRemoveRate}
             className={styles.removeBtn}
-        />
+        />}
     </>
 }
 
