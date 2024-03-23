@@ -12,8 +12,18 @@ export const FavoriteMovieContextProvider = ({children}) => {
     const [favoriteMovies, setFavoriteMovies] = useState([]);
 
     useEffect(() => {
-        ApiClient.get(`/account/${process.env.REACT_APP_TMDB_ACCOUNT_ID}/favorite/movies`)
-            .then(data => setFavoriteMovies(data.results))
+        const doRequest = page => ApiClient.get(`/account/${process.env.REACT_APP_TMDB_ACCOUNT_ID}/favorite/movies?page=${page}`)
+            .then(data => {
+                setFavoriteMovies(favoriteMovies => [...data.results, ...favoriteMovies])
+
+                if (data.page === data.total_pages) {
+                    return
+                }
+
+                doRequest(data.page + 1)
+            })
+
+        doRequest(1)
     }, [])
 
     const addFavoriteMovie = (movie) => {

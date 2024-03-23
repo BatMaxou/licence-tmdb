@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './styles/index.scss'
 import Home from './pages/Home';
 import Movie from './pages/Movie';
+import Favorites from './pages/Favorites';
 import {FavoriteMovieContextProvider} from './contexts/FavoriteMovieContext';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/">
                     <Route index element={<Home />} />
                     <Route path="movie/:id" element={<Movie />} />
+                    <Route path="favorites" element={<Favorites />} />
                     <Route path="*" element={<div>404</div>} />
                 </Route>
             </Routes>
