@@ -1,0 +1,27 @@
+@import '../../../styles/variables.scss';
+
+.commentAdder {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    margin-block: 20px;
+
+    input {
+        width: 25%;
+    }
+
+    .submit {
+        width: 25%;
+        background-color: transparent;
+        color: $white;
+        border: $white solid 2px;
+        border-radius: 5px;
+        font-size: $font-size-text;
+
+        &:hover, &:focus {
+            border-color: $primary-color;
+            outline: none;
+        }
+    }
+}
