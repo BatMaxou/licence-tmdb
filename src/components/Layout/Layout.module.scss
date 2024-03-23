@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-block: 40px;
+    padding-top: 60px;
     gap: 60px;
+
+    .navbarHome {
+        position: sticky;
+        top: 0;
+    }
 }
