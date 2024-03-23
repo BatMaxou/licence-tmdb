@@ -23,7 +23,7 @@ const MovieCard = ({movie}) => {
     }, [movie])
 
     return <Link
-        to={`movie/${movie.id}`}
+        to={`/movie/${movie.id}`}
         onClick={(e) => e.target === favorite.current && e.preventDefault()}
     >
         <Card className={styles.card}>
