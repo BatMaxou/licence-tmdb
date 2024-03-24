@@ -27,7 +27,7 @@ const Movie = () => {
     }, [id])
 
     useEffect(() => {
-        ApiClient.get(`/movie/${id}?language=fr&append_to_response=credits`)
+        ApiClient.get(`/movie/${id}?language=fr&append_to_response=credits,watch/providers`)
             .then(data => setMovie(data))
     }, [id])
 
