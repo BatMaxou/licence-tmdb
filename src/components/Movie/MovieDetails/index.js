@@ -1,3 +1,5 @@
+import {useMemo} from 'react'
+
 import styles from './MovieDetails.module.scss'
 import cn from '../../../utils/classnames'
 import getGenreColor from '../../../utils/genreColors'
@@ -5,8 +7,21 @@ import List from '../../ui/atoms/List'
 import Tag from '../../ui/atoms/Tag'
 import Stars from '../../ui/molecules/Stars'
 import MovieRate from '../MovieRate'
+import MovieProvider from '../MovieProvider'
 
 const MovieDetails = ({movie}) => {
+    const providers = useMemo(() => {
+        if (
+            !movie['watch/providers']
+            || !movie['watch/providers'].results
+            || !movie['watch/providers'].results['FR']
+        ) {
+            return null
+        }
+
+        return movie['watch/providers'].results['FR']
+    }, [movie])
+
     return <div className={styles.movieDetails}>
         {movie.genres && <List
             collection={movie.genres}
@@ -32,6 +47,35 @@ const MovieDetails = ({movie}) => {
                     renderItem={companie => <p>{`- ${companie.name}`}</p>}
                     className={styles.subList}
                 />}
+                {providers && <>
+                    {providers.buy && <div className={cn(styles.gridItem, styles.full, styles.column)}>
+                        <p className={styles.label}>Disponible à l'achat sur : </p>
+                        <List
+                            collection={providers.buy}
+                            renderItem={provider => <MovieProvider name={`- ${provider.provider_name}`} logo={provider.logo_path} />}
+                            uniqueAttr={provider => provider.provider_id}
+                            className={styles.subList}
+                        />
+                    </div>}
+                    {providers.rent && <div className={cn(styles.gridItem, styles.full, styles.column)}>
+                        <p className={styles.label}>Disponible à la location sur : </p>
+                        <List
+                            collection={providers.rent}
+                            renderItem={provider => <MovieProvider name={`- ${provider.provider_name}`} logo={provider.logo_path} />}
+                            uniqueAttr={provider => provider.provider_id}
+                            className={styles.subList}
+                        />
+                    </div>}
+                    {providers.flatrate && <div className={cn(styles.gridItem, styles.full, styles.column)}>
+                        <p className={styles.label}>Disponible avec un abonnement : </p>
+                        <List
+                            collection={providers.flatrate}
+                            renderItem={provider => <MovieProvider name={`- ${provider.provider_name}`} logo={provider.logo_path} />}
+                            uniqueAttr={provider => provider.provider_id}
+                            className={styles.subList}
+                        />
+                    </div>}
+                </>}
                 <div className={cn(styles.gridItem, styles.full, styles.column)}>
                     <p className={styles.label}>{`Note (${movie.vote_count}) : `}</p>
                     <Stars percentage={movie.vote_average * 10} />

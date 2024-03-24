@@ -1,0 +1,11 @@
+.provider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 35px;
+
+    img {
+        width: 30px;
+        border-radius: 10px;
+    }
+}
