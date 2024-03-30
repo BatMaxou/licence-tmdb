@@ -4,6 +4,7 @@
     position: relative;
     width: 100%;
     padding-inline: $padding-inline;
+    padding-bottom: 20px;
 
     > div {
         align-items: center;
@@ -38,6 +39,25 @@
         }
     }
 
+    .swiperScrollbar {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        height: 4px;
+        width: 80%;
+        background-color: $shadow;
+        border-radius: 10px;
+        cursor: pointer;
+
+        .swiperDrag {
+            background: $primary-color;
+            height: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
     .swiperNext {
         right: 0;
     }
@@ -46,7 +66,6 @@
         left: 0
     }
 }
-
 
 @media (max-width: 1500px) {
     .swiper > div {
