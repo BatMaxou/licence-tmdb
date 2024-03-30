@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from 'react'
 
 import styles from './MovieCard.module.scss'
 import Card from '../../ui/atoms/Card'
-import MovieImage from '../MovieImage'
+import Poster from '../../Poster'
 import List from '../../ui/atoms/List'
 import apiClient from '../../../api/ApiClient'
 import Tag from '../../ui/atoms/Tag'
@@ -32,7 +32,7 @@ const MovieCard = ({movie}) => {
                 className={styles.favorite}
                 ref={favorite}
             />
-            <MovieImage movieTitle={movie.title} posterPath={movie.poster_path} />
+            <Poster title={movie.title} posterPath={movie.poster_path} />
             <div className={styles.details}>
                 <h3>{movie.title}</h3>
                 <List

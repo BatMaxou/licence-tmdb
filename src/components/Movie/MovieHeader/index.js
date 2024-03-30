@@ -1,7 +1,7 @@
 
 import styles from './MovieHeader.module.scss'
-import MovieImage from "../MovieImage"
 import MovieFavorite from '../MovieFavorite'
+import Poster from '../../Poster'
 
 const MovieHeader = ({movie}) => {
     return <div className={styles.movieHeader}>
@@ -11,9 +11,9 @@ const MovieHeader = ({movie}) => {
             className={styles.background}
         />
         <div className={styles.mainInfos}>
-            <MovieImage
+            <Poster
+                title={movie.title}
                 posterPath={movie.poster_path}
-                movieTitle={movie.title}
                 className={styles.poster}
             />
             <h1 className={styles.title}>{movie.title}</h1>

@@ -6,7 +6,6 @@ const Navbar = ({className}) => {
     const links = [
         {id: 1, label: 'Accueil', url: '/'},
         {id: 2, label: 'Favoris', url: '/favorites'},
-        {id: 3, label: 'Rechercher', url: '/search'},
     ]
 
     return <nav className={cn(styles.navbar, className)}>

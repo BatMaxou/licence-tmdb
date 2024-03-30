@@ -7,7 +7,7 @@ const List = ({collection, uniqueAttr = null, renderItem, className}) => {
     }
 
     return <ul className={cn(styles.list, className)}>
-        {collection.map((element) => <li key={uniqueAttr(element)}>{renderItem(element)}</li>)}
+        {collection.map(element => <li key={uniqueAttr(element)}>{renderItem(element)}</li>)}
     </ul>
 }
 

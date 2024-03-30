@@ -1,11 +1,11 @@
 import Layout from "../../components/Layout"
-import SearchMovie from "../../components/Movie/SearchMovie";
 import PopularMovie from "../../components/Movie/PopularMovie"
+import Search from "../../components/Search"
 
 const Home = () => {
     return <Layout isHome={true}>
         <PopularMovie />
-        <SearchMovie />
+        <Search />
     </Layout>
 }
 
