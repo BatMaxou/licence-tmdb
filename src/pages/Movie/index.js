@@ -36,7 +36,7 @@ const Movie = () => {
         <MovieDetails movie={movie} />
         <CommentAdder onSubmit={comment => addComment(comment)} />
         {comments && <List
-            collection={comments}
+            collection={comments.reverse()}
             renderItem={comment => <Comment
                 pseudo={comment.pseudo}
                 date={comment.date}

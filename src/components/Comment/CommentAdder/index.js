@@ -31,6 +31,9 @@ const CommentAdder = ({onSubmit}) => {
             content,
             date: `${date.toLocaleDateString('fr')}-${date.toLocaleTimeString('fr')}`
         })
+
+        setPseudo('')
+        setComment('')
     }, [onSubmit])
 
     return <>
