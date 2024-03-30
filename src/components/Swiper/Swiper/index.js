@@ -1,5 +1,7 @@
 import {Swiper as BaseSwiper, SwiperSlide} from 'swiper/react'
+import {Scrollbar} from 'swiper/modules';
 import 'swiper/scss'
+import 'swiper/scss/scrollbar';
 
 import styles from './Swiper.module.scss'
 import cn from '../../../utils/classnames'
@@ -12,7 +14,14 @@ const Swiper = ({collection, uniqueAttr, renderItem, className}) => {
     }
 
     return <BaseSwiper
+        modules={[Scrollbar]}
+        draggable={true}
         slidesPerView={'auto'}
+        scrollbar={{
+            draggable: true,
+            horizontalClass: styles.swiperScrollbar,
+            dragClass: styles.swiperDrag
+        }}
         className={cn(styles.swiper, className)}
     >
         {collection.map(element => <SwiperSlide key={uniqueAttr(element)} className={styles.slide}>
