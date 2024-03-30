@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .layout {
     position: relative;
     display: flex;
@@ -6,6 +8,28 @@
     padding-block: 60px;
     gap: 60px;
     min-height: 100dvh;
+
+    .mainTitle {
+        position: relative;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 2px;
+            background-color: $primary-color;
+        }
+
+        &::before {
+            top: -10px;
+            left: 0;
+        }
+
+        &::after {
+            bottom: -10px;
+            right: 0;
+        }
+    }
 
     .navbarHome {
         position: sticky;
