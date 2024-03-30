@@ -14,15 +14,16 @@ import CommentAdder from "../../components/Comment/CommentAdder"
 
 const Movie = () => {
     const [movie, setMovie] = useState({})
-    const {id} = useParams();
+    const {id} = useParams()
 
     const comments = useLiveQuery(() => DexieClient.getDatabase().comment
         .where('movieId')
         .equals(id)
+        .reverse()
         .toArray()
     )
 
-    const addComment = useCallback((comment) => {
+    const addComment = useCallback(comment => {
         DexieClient.addComment({...comment, movieId: id})
     }, [id])
 
@@ -36,7 +37,7 @@ const Movie = () => {
         <MovieDetails movie={movie} />
         <CommentAdder onSubmit={comment => addComment(comment)} />
         {comments && <List
-            collection={comments.reverse()}
+            collection={comments}
             renderItem={comment => <Comment
                 pseudo={comment.pseudo}
                 date={comment.date}
