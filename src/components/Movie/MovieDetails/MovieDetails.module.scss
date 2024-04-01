@@ -1,0 +1,73 @@
+.movieDetails {
+    width: 90%;
+    max-width: 1500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .genreList {
+        justify-content: flex-start;
+        gap: 10px;
+
+        > * {
+            width: auto;
+        }
+
+        @media (max-width: 756px) {
+            justify-content: center;
+        }
+    }
+
+    .grid {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px 5%;
+
+        .gridItem {
+            display: flex;
+            gap: 20px 10px;
+
+            .label {
+                font-weight: 700;
+            }
+
+            &.full {
+                width: 100%;
+            }
+
+            &.half {
+                width: 45%;
+            }
+
+            &.column {
+                flex-direction: column;
+            }
+
+            &.justify {
+                text-align: justify;
+            }
+
+            .subList {
+                width: auto;
+                flex-direction: column;
+                gap: 0;
+                justify-content: flex-start;
+                align-items: flex-start;
+
+                > * {
+                    width: auto;
+                }
+            }
+
+            @media (max-width: 756px) {
+                justify-content: center;
+                align-items: center;
+
+                &.half {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

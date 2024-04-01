@@ -1,0 +1,102 @@
+@import '../../../styles/variables.scss';
+
+.swiper {
+    position: relative;
+    width: 100%;
+    padding-inline: $padding-inline;
+    padding-bottom: 20px;
+
+    > div {
+        align-items: center;
+
+        .slide {
+            margin-inline: 1%;
+            width: 18%;
+            z-index: 1;
+        }
+    }
+
+    .swiperNext,
+    .swiperPrev {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2;
+        transition: background-color .2s linear;
+
+        img {
+            width: 40px;
+        }
+
+        &:hover {
+            background-color: $shadow;
+        }
+    }
+
+    .swiperScrollbar {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        height: 4px;
+        width: 80%;
+        background-color: $shadow;
+        border-radius: 10px;
+        cursor: pointer;
+
+        .swiperDrag {
+            background: $primary-color;
+            height: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .swiperNext {
+        right: 0;
+    }
+
+    .swiperPrev {
+        left: 0
+    }
+}
+
+@media (max-width: 1500px) {
+    .swiper > div {
+        .slide {
+            margin-inline: 1.5%;
+            width: 22%;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .swiper > div {
+        .slide {
+            width: 30%;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .swiper > div {
+        .slide {
+            margin-inline: 5%;
+            width: 40%;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .swiper > div {
+        .slide {
+            width: 90%;
+        }
+    }
+}

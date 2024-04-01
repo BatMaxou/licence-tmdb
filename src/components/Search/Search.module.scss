@@ -1,0 +1,100 @@
+@import '../../styles/variables.scss';
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    .searchInput {
+        width: 70%;
+        margin: 0 auto;
+        max-width: 1000px;
+        height: 50px;
+    }
+
+    .checkboxContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        > * {
+            cursor: pointer;
+        }
+
+        label {
+            color: $white;
+            font-size: $font-size-text;
+        }
+    }
+
+    .genreList {
+        width: 90%;
+        max-width: 1500px;
+        gap: 10px 20px;
+
+        > * {
+            width: auto;
+        }
+    }
+
+    .movieList {
+        > ul {
+            padding-inline: $padding-inline;
+            gap: 20px 2%;
+
+            > * {
+                width: 18%;
+            }
+        }
+    }
+
+    @media (max-width: 1500px) {
+        .movieList {
+            > ul {
+                gap: 20px 3%;
+
+                > * {
+                    width: 22%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .movieList {
+            > ul {
+                > * {
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .movieList {
+            > ul {
+                gap: 20px 10%;
+
+                > * {
+                    width: 40%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .searchInput {
+            width: 90%;
+        }
+
+        .movieList {
+            > ul {
+                > * {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@import "../../../../styles/variables.scss";
+
+.textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: $white solid 2px;
+    padding: 10px;
+    color: $white;
+    font-size: $font-size-text;
+
+    &:focus {
+        border-color: $primary-color;
+        outline: none;
+    }
+}

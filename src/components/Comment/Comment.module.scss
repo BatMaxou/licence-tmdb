@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 2px solid $primary-color;
+    padding: 20px;
+
+    .header {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-size: 14px;
+    }
+}

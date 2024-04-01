@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: $white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: $black;
+    z-index: 4;
+
+    .linkList {
+        gap: 20px 40px;
+
+        > * {
+            width: auto;
+
+            a {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0%;
+                    height: 2px;
+                    background-color: $primary-color;
+                    transition: width .2s linear;
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

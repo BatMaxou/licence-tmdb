@@ -3,8 +3,11 @@
 .tag {
     width: auto;
     font-size: 16px;
+    font-weight: bold;
     padding: 2px 10px;
-    border: 1px solid $primary-color;
-    background-color: $white;
+    color: var(--color);
+    border: 1px solid var(--background-color);
+    background: var(--background);
+    background-color: var(--background-color);
     border-radius: 10px;
 }

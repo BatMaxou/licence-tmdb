@@ -1,0 +1,9 @@
+.layout {
+    gap: 30px;
+
+    .commentList {
+        > * {
+            width: 90%;
+        }
+    }
+}
