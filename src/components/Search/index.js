@@ -112,7 +112,6 @@ const Search = () => {
             return <MovieCard movie={result} />
         }
 
-        console.log(result);
         switch (result.media_type) {
             case 'movie':
                 return <MovieCard movie={result} />
