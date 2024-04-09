@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useState} from 'react'
 import {useDebounce} from '@uidotdev/usehooks'
+import {useNavigate, useSearchParams} from 'react-router-dom'
 
 import styles from './Search.module.scss'
 import getGenreColor from '../../utils/genreColors'
@@ -24,10 +25,44 @@ const Search = () => {
     const [whatChanged, setWhatChanged] = useState('')
     const [onlyMovie, setOnlyMovie] = useState(true)
     const debouncedSearchInput = useDebounce(searchedInput, 500)
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         ApiClient.get('/genre/movie/list?language=fr')
             .then(data => setGenres(data.genres))
+
+        const queryMulti = searchParams.get('multi')
+        const queryInput = searchParams.get('input')
+        const queryGenre = searchParams.get('genre')
+        const queryPage = searchParams.get('page')
+
+        setPage(queryPage ? parseInt(queryPage, 10) : 1)
+
+        if (queryMulti) {
+            setSearchedInput(queryMulti)
+            setOnlyMovie(false)
+            setWhatChanged('input')
+
+            return
+        }
+
+        setOnlyMovie(true)
+
+        if (queryInput) {
+            setSearchedInput(queryInput)
+            setWhatChanged('input')
+
+            return
+        }
+
+        if (queryGenre) {
+            queryGenre.split(',').forEach(genre => setGenresSearched(genres => ({
+                ...(genres ?? {}),
+                [genre]: true
+            })))
+            setWhatChanged('genres')
+        }
     }, [])
 
     useEffect(() => {
@@ -50,6 +85,7 @@ const Search = () => {
                         setSearchedResults(data.results)
                         setMaxPage(data.total_pages)
                         setLoader(false)
+                        navigate(`/?input=${debouncedSearchInput}&page=${page}`);
                     })
 
                 return
@@ -60,6 +96,7 @@ const Search = () => {
                     setSearchedResults(data.results)
                     setMaxPage(data.total_pages)
                     setLoader(false)
+                    navigate(`/?multi=${debouncedSearchInput}&page=${page}`);
                 })
 
             return
@@ -81,6 +118,7 @@ const Search = () => {
                     setSearchedResults(data.results)
                     setMaxPage(data.total_pages)
                     setLoader(false)
+                    navigate(`/?genre=${genreQuery}&page=${page}`);
                 })
 
             return
