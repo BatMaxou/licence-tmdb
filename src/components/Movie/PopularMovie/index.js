@@ -11,7 +11,7 @@ const PopularMovie = () => {
     const [popularMovies, setPopularMovies] = useState(null)
 
     useEffect(() => {
-        ApiClient.get('/movie/popular?language=fr_FR&page=1')
+        ApiClient.get('/movie/popular?language=fr&page=1')
             .then(data => setPopularMovies(data.results))
     }, [])
 

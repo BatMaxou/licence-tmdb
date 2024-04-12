@@ -16,10 +16,12 @@ const MovieCard = ({movie}) => {
 
     useEffect(() => {
         setGenres([])
-        movie.genre_ids.forEach(id => {
-            apiClient.get(`/genre/${id}?language=fr`)
-                .then(data => setGenres(genres => [...genres, data]))
-        })
+        if (movie.genre_ids) {
+            movie.genre_ids.forEach(id => {
+                apiClient.get(`/genre/${id}?language=fr`)
+                    .then(data => setGenres(genres => [...genres, data]))
+            })
+        }
     }, [movie])
 
     return <Link

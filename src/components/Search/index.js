@@ -80,7 +80,7 @@ const Search = () => {
             setLoader(true)
 
             if (onlyMovie) {
-                ApiClient.get(`/search/movie?query=${debouncedSearchInput}&include_adult=true&language=fr_FR&page=${page}`)
+                ApiClient.get(`/search/movie?query=${debouncedSearchInput}&include_adult=true&language=fr&page=${page}`)
                     .then(data => {
                         setSearchedResults(data.results)
                         setMaxPage(data.total_pages)
@@ -91,7 +91,7 @@ const Search = () => {
                 return
             }
 
-            ApiClient.get(`/search/multi?query=${debouncedSearchInput}&include_adult=true&language=fr_FR&page=${page}`)
+            ApiClient.get(`/search/multi?query=${debouncedSearchInput}&include_adult=true&language=fr&page=${page}`)
                 .then(data => {
                     setSearchedResults(data.results)
                     setMaxPage(data.total_pages)
@@ -113,7 +113,7 @@ const Search = () => {
                 .join(',')
 
             setLoader(true)
-            ApiClient.get(`/discover/movie?include_adult=true&include_video=false&language=fr_FR&page=${page}&sort_by=popularity.desc&with_genres=${genreQuery}`)
+            ApiClient.get(`/discover/movie?include_adult=true&include_video=false&language=fr&page=${page}&sort_by=popularity.desc&with_genres=${genreQuery}`)
                 .then(data => {
                     setSearchedResults(data.results)
                     setMaxPage(data.total_pages)
